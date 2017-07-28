@@ -28,7 +28,8 @@ class ApiAuthController extends Controller
     	$validator = Validator::make($data->all(), $rules);
         if($validator->fails())
         {
-            return $validator->messages();
+            $error = $validator->messages();
+            return response()->json(compact('error'), 400);
         }
         $data_email = array(
             'name' => $data['name'],
