@@ -29,7 +29,7 @@ class ApiAuthController extends Controller
         if($validator->fails())
         {
             $error = $validator->messages();
-            return response()->json(compact('error'), 400);
+            return response()->json(compact('error'), 422);
         }
         $data_email = array(
             'name' => $data['name'],
