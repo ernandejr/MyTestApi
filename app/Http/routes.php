@@ -13,6 +13,7 @@
   Route::get('/', function () {
       return response()->json(['message' => 'MyTest API', 'status' => 'Connected']);;
   });
+  Route::get('/validation/{validationtoken}', 'ApiAuthController@validateToken');
   Route::group(['middleware' => 'cors'], function(){
   	Route::post('/sign_up', 'ApiAuthController@create');
   	Route::post('/auth_login', 'ApiAuthController@userAuth');

@@ -114,4 +114,10 @@ class ApiAuthController extends Controller
 		}
 			return response()->json(['msg'=> 'Ok']);
 	}
+
+    public function validateToken($validationtoken)
+    {
+        $user = \DB::table('users')->where('activetoken', '=', $validationtoken)->update(array('active'=>1));
+        return \Redirect::to('/profile/?a=true')->with('message', 'conta ativada com sucesso.');
+    }
 }
