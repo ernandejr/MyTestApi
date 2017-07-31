@@ -70,7 +70,7 @@ class ApiAuthController extends Controller
 
     	try{
     		if(!$token = JWTAuth::attempt($credentials)){
-    			return response()->json(["error" => "Usuário e senha invalidos."]);
+    			return response()->json(["error" => "Usuário e senha invalidos."], 203);
     		}
     	}catch(JWTExeption $ex){
     		return response()->json(["error" => "Algo está errado..."], 500);
